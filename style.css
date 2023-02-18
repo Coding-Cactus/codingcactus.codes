@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
 
 :root {
-    --main-bg: #082d0f;
+    --cactus: #7cb518;
+    --main-bg: #5c8001;
     --main-color: #f2f4f3;
-    --foreground: #7cb518;
+    --foreground: #082d0f;
 }
 
 * {
@@ -13,24 +14,38 @@
 }
 
 body {
-    background-color: var(--main-bg);
     color: var(--main-color);
+    background-color: var(--main-bg);
     min-height: 100vh;
     min-width: 100vw;
     font-family: 'Dosis', sans-serif;
     overflow-x: hidden;
+    scroll-behavior: smooth;
+    /* overflow-y: hidden;*/
+    animation: body-overflow 0s linear 5.2s forwards;
+}
+
+@keyframes body-overflow {
+    0%   { overflow-y: hidden; }
+    100% { overflow-y: auto; }
+}
+
+header {
+    display: flex;
+    align-items: center;
+    background-color: var(--foreground);
+    width: 100vw;
+    height: 100vh;
+    /* overflow: hidden;*/
 }
 
 #name {
-    --height: 503px;
-    --width: 923px;
-    font-size: 164px;
+    --width: 503px;
+    --height: 923px;
+    display: flex;
+    align-items: center;
+    font-size: 130px;
     text-align: center;
-    letter-spacing: 4px;
-    position: absolute;
-    top: calc(50vh - calc(var(--height) / 2));
-    left: calc(50vw - var(--width) / 2);
-    animation: name-rotate 0.8s ease-in-out 2.35s forwards;
 }
 
 @keyframes name-rotate {
@@ -43,16 +58,21 @@ body {
     }
 }
 
-#name span {
+#letters {
+    writing-mode: vertical-rl;
+    padding-left: 20px;
+    transform: rotate(180deg);
+}
+
+#letters span {
     display: inline-block;
-    transform: translateY(calc(-50vh - var(--height)));
-    animation: letter-fall 0.5s ease-in-out 0.1s forwards;
-    margin-bottom: 20px;
+    transform: translateY(100vh) rotate(360deg);
+    animation: letter-fall 0.9s ease-in-out 0.1s forwards;
 }
 
 @keyframes letter-fall {
-    75%  { transform: translateY(10px); }
-    92%  { transform: translateY(-5px); }
+    75%  { transform: translateY(-15px) rotate(0deg); }
+    92%  { transform: translateY(5px); }
     100% { transform: translateY(0); }
 }
 
@@ -69,62 +89,54 @@ body {
 #letters span:nth-child(11) { animation-delay: 1.1s; }
 #letters span:nth-child(12) { animation-delay: 1.2s; }
 
-#cactus-top, #cactus-bottom {
-    --cactus-height: 138px;
-    fill: var(--foreground);
-    stroke: var(--foreground);
+#cactus-left, #cactus-right {
+    fill: var(--cactus);
+    stroke: var(--cactus);
     display: block;
 }
 
-#cactus-bottom {
-    transform: translateX(calc(-50vw - var(--width) / 2));
-    animation: cactus-bottom 1s ease-in 0.7s forwards;
+#cactus-right {
+    padding-right: 20px;
 }
 
-#cactus-top {
-    opacity: 0;
-    transform: translateY(calc(var(--height) - var(--cactus-height))) rotateX(180deg);
-    animation: cactus-top 0.6s ease-in-out 1.8s forwards;
-}
-
-@keyframes cactus-bottom {
-    80%  { transform: translateX(30px); }
-    92%  { transform: translateX(-10px); }
-    100% { transform: none; }
-}
-
-@keyframes cactus-top {
-    0%   { opacity: 1; }
-    100% { opacity: 1;transform: none; }
+#cactus-left {
+    padding-left: 20px;
 }
 
 #about-me {
+    background-color: var(--foreground);
+    color: var(--main-color);
     font-size: 32px;
-    height: 100vh;
+    width: 50vw;
+    margin: 0 auto;
+}
+
+#curve {
     width: 100vw;
-    padding-left: 40vw;
-    padding-right: 10vw;
-    padding-top: calc(50vh - 300px);
+    height: auto;
+    fill: var(--foreground);
+    -webkit-filter: drop-shadow(0 5px 3px rgba(0, 0, 0, 0.4));
+    filter: drop-shadow(0 5px 3px rgba(0, 0, 0, 0.4));
 }
 
 #about-me h1, #about-me p, #about-me li {
     opacity: 0;
-    animation: fade-in 0.8s ease-in-out 3.2s forwards;
+    transform: scale(1.035);
+    animation: fade-in 0.3s ease-in 0s forwards;
 }
 
 @keyframes fade-in {
-    65%  { opacity: 0.7; transform: scale(1.05) }
     100% { opacity: 1; transform: none; }
 }
 
-#about-me .one   { animation-delay: 2.8s; }
-#about-me .two   { animation-delay: 3s;   }
-#about-me .three { animation-delay: 3.2s; }
-#about-me .four  { animation-delay: 3.4s; }
-#about-me .five  { animation-delay: 3.6s; }
-#about-me .six   { animation-delay: 3.8s; }
-#about-me .seven { animation-delay: 4s;   }
-#about-me .eight { animation-delay: 4.2s; }
+#about-me .one   { animation-delay: 0.3s; }
+#about-me .two   { animation-delay: 0.5s; }
+#about-me .three { animation-delay: 0.7s; }
+#about-me .four  { animation-delay: 0.9s; }
+#about-me .five  { animation-delay: 1.1s; }
+#about-me .six   { animation-delay: 1.3s; }
+#about-me .seven { animation-delay: 1.5s; }
+#about-me .eight { animation-delay: 1.7s; }
 
 #about-me h1 {
     font-weight: 400;
@@ -144,5 +156,12 @@ body {
 }
 
 #about-me a {
-    color: var(--foreground);
+    color: var(--main-bg);
 }
+
+.first, .second {
+    margin-right: 2px;
+}
+
+.first  { color: #EECB13; }
+.second { color: #D3D3D3; }
