@@ -16,36 +16,39 @@
 body {
     color: var(--main-color);
     background-color: var(--main-bg);
-    min-height: 100vh;
     min-width: 100vw;
     font-family: 'Dosis', sans-serif;
     overflow-x: hidden;
     scroll-behavior: smooth;
-    /* overflow-y: hidden;*/
-    animation: body-overflow 0s linear 5.2s forwards;
-}
-
-@keyframes body-overflow {
-    0%   { overflow-y: hidden; }
-    100% { overflow-y: auto; }
-}
-
-header {
-    display: flex;
-    align-items: center;
-    background-color: var(--foreground);
-    width: 100vw;
-    height: 100vh;
-    /* overflow: hidden;*/
 }
 
 #name {
-    --width: 503px;
-    --height: 923px;
+    z-index: 1;
     display: flex;
     align-items: center;
-    font-size: 130px;
-    text-align: center;
+    position: fixed;
+    --height: 80vh;
+    height: var(--height);
+    left: 0;
+    top: calc((100vh - var(--height)) / 2);
+}
+
+#name, #name * {
+    transition: 0.3s all;
+}
+
+#name.scroll {
+    height: 100vh;
+    left: -15.5vh;
+    top: 0;
+}
+
+#name.scroll #cactus-left, #name.scroll #cactus-right path {
+    opacity: 0;
+}
+
+#name.scroll #cactus-right {
+    height: 102vh;
 }
 
 @keyframes name-rotate {
@@ -59,8 +62,10 @@ header {
 }
 
 #letters {
+    font-size: 14vh;
+    text-align: center;
     writing-mode: vertical-rl;
-    padding-left: 20px;
+    padding-left: 3vh;
     transform: rotate(180deg);
 }
 
@@ -93,6 +98,7 @@ header {
     fill: var(--cactus);
     stroke: var(--cactus);
     display: block;
+    height: var(--height);
 }
 
 #cactus-right {
@@ -103,11 +109,23 @@ header {
     padding-left: 20px;
 }
 
+header {
+     display: flex;
+     align-items: center;
+     background-color: var(--foreground);
+     width: 100vw;
+     height: 100vh;
+ }
+
+#cactus-filler {
+    width: 49vh;
+}
+
 #about-me {
     background-color: var(--foreground);
     color: var(--main-color);
-    font-size: 32px;
-    width: 50vw;
+    font-size: 4vh;
+    width: 45vw;
     margin: 0 auto;
 }
 
@@ -140,19 +158,19 @@ header {
 
 #about-me h1 {
     font-weight: 400;
-    font-size: 128px;
+    font-size: 15vh;
     text-align: center;
     margin-bottom: 50px;
 }
 
 #about-me p {
-    line-height: 42px;
+    line-height: 5vh;
     margin-bottom: 15px;
 }
 
 #about-me ul, #about-me li {
     margin-left: 1em;
-    line-height: 42px;
+    line-height: 5vh;
 }
 
 #about-me a {
@@ -165,3 +183,97 @@ header {
 
 .first  { color: #EECB13; }
 .second { color: #D3D3D3; }
+
+main {
+    display: flex;
+    width: 100vw;
+    padding-bottom: 10vh;
+}
+
+main #content {
+    width: 50vw;
+    margin: 0 auto;
+}
+
+main #content > div {
+    margin-top: 10vh;
+}
+
+#name-filler {
+    width: 22vh;
+}
+
+#tech #logos {
+    --ruby-width: 22vw;
+    position: relative;
+    width: calc(var(--ruby-width) + 10vw);
+    height: var(--ruby-width);
+    margin: auto auto 10vh;
+}
+
+#tech #logos > * {
+    position: absolute;
+}
+
+#tech #logos img {
+    pointer-events: none;
+    user-select: none;
+}
+
+#tech #logos > :first-child {
+    width: var(--ruby-width);
+    display: block;
+    top: calc(50% - var(--ruby-width) / 2);
+    left: calc(50% - var(--ruby-width) / 2);
+    z-index: 1;
+}
+
+#tech #logos > :not(:first-child) {
+    --width: 4vw;
+    width: var(--width);
+    top: calc(60% - var(--width) / 2);
+    --duration: 5s;
+    z-index: 2;
+    animation: horizontal var(--duration) ease-in-out infinite;
+}
+
+#tech #logos > :not(:first-child) img {
+    width: 100%;
+    animation: vertical var(--duration) ease-in-out calc(var(--duration) / -4) infinite;
+}
+
+#tech #logos > :nth-child(2) { animation-delay: calc(var(--duration) / -8 * 1); }
+#tech #logos > :nth-child(3) { animation-delay: calc(var(--duration) / -8 * 2); }
+#tech #logos > :nth-child(4) { animation-delay: calc(var(--duration) / -8 * 3); }
+#tech #logos > :nth-child(5) { animation-delay: calc(var(--duration) / -8 * 4); }
+#tech #logos > :nth-child(6) { animation-delay: calc(var(--duration) / -8 * 5); }
+#tech #logos > :nth-child(7) { animation-delay: calc(var(--duration) / -8 * 6); }
+#tech #logos > :nth-child(8) { animation-delay: calc(var(--duration) / -8 * 7); }
+
+#tech #logos > :nth-child(2) img { animation-delay: calc(var(--duration) / -8 * 1 - calc(var(--duration) / 4)); }
+#tech #logos > :nth-child(3) img { animation-delay: calc(var(--duration) / -8 * 2 - calc(var(--duration) / 4)); }
+#tech #logos > :nth-child(4) img { animation-delay: calc(var(--duration) / -8 * 3 - calc(var(--duration) / 4)); }
+#tech #logos > :nth-child(5) img { animation-delay: calc(var(--duration) / -8 * 4 - calc(var(--duration) / 4)); }
+#tech #logos > :nth-child(6) img { animation-delay: calc(var(--duration) / -8 * 5 - calc(var(--duration) / 4)); }
+#tech #logos > :nth-child(7) img { animation-delay: calc(var(--duration) / -8 * 6 - calc(var(--duration) / 4)); }
+#tech #logos > :nth-child(8) img { animation-delay: calc(var(--duration) / -8 * 7 - calc(var(--duration) / 4)); }
+
+@keyframes horizontal {
+    0%   { left: calc(15% - var(--width) / 2); }
+    50%  { left: calc(85% - var(--width) / 2); }
+    55%  { z-index: 0; }
+    100% { left: calc(15% - var(--width) / 2); z-index: 0; }
+}
+
+@keyframes vertical {
+    0%   { transform: translateY(calc(-0.1 * var(--ruby-width) - var(--width) / 2)); }
+    50%  { transform: translateY(calc(0.175 * var(--ruby-width) + var(--width) / 2)); }
+    100% { transform: translateY(calc(-0.1 * var(--ruby-width) - var(--width) / 2)); }
+}
+
+#tech p {
+    width: 40vw;
+    font-size: 3.5vh;
+    margin: 2.5vh auto;
+    text-align: center;
+}
