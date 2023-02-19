@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
 
 :root {
-    --cactus: #7cb518;
-    --main-bg: #5c8001;
+    --highlight: #7cb518;
+    --main-bg: #082d0f;
     --main-color: #f2f4f3;
-    --foreground: #082d0f;
+    --foreground: #011306;
 }
 
 * {
@@ -13,13 +13,16 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     color: var(--main-color);
     background-color: var(--main-bg);
     min-width: 100vw;
     font-family: 'Dosis', sans-serif;
     overflow-x: hidden;
-    scroll-behavior: smooth;
 }
 
 #name {
@@ -95,8 +98,8 @@ body {
 #letters span:nth-child(12) { animation-delay: 1.2s; }
 
 #cactus-left, #cactus-right {
-    fill: var(--cactus);
-    stroke: var(--cactus);
+    fill: var(--highlight);
+    stroke: var(--highlight);
     display: block;
     height: var(--height);
 }
@@ -134,7 +137,7 @@ header {
     height: auto;
     fill: var(--foreground);
     -webkit-filter: drop-shadow(0 5px 3px rgba(0, 0, 0, 0.4));
-    filter: drop-shadow(0 5px 3px rgba(0, 0, 0, 0.4));
+    filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.4));
 }
 
 #about-me h1, #about-me p, #about-me li {
@@ -174,7 +177,7 @@ header {
 }
 
 #about-me a {
-    color: var(--main-bg);
+    color: var(--highlight);
 }
 
 .first, .second {
