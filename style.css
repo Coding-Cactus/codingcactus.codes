@@ -206,6 +206,10 @@ main #content > div {
     width: 22vh;
 }
 
+#tech {
+    height: 100vh;
+}
+
 #tech #logos {
     --ruby-width: 22vw;
     position: relative;
@@ -280,3 +284,81 @@ main #content > div {
     margin: 2.5vh auto;
     text-align: center;
 }
+
+#projects p {
+    font-size: 3vh;
+    text-align: justify;
+}
+
+#projects p a {
+    color: var(--highlight);
+}
+
+#projects > div h2 {
+    font-size: 4vh;
+    margin-bottom: 1.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#projects > div h2 a {
+    text-decoration: none;
+}
+
+#projects > div h2 svg {
+    display: inline-block;
+    height: 4vh;
+    color: var(--main-color);
+    fill: var(--main-color);
+    transition: color 0.3s, fill 0.3s;
+}
+
+#projects > div h2 a:hover svg {
+    color: var(--highlight);
+    fill: var(--highlight);
+}
+
+#projects > div {
+    --duration: 0.3s;
+    position: relative;
+    padding: 2vh 4vh;
+    margin-bottom: 10vh;
+}
+
+#projects > div > * {
+    opacity: 0;
+    transition: opacity var(--duration);
+}
+
+#projects > div.show > * {
+    opacity: 1;
+    transition: opacity 0.3s linear 0.6s;
+}
+
+#projects > div::before, #projects > div::after {
+    --width: 1vh;
+    content: "";
+    opacity: 0;
+    display: block;
+    position: absolute;
+    top: 50%;
+    height: 1vh;
+    width: var(--width);
+    background-color: var(--highlight);
+    border-radius: var(--width);
+    transition: top var(--duration), height var(--duration), left var(--duration) var(--duration), right var(--duration) var(--duration), opacity 0.2s calc(2 * var(--duration));
+}
+
+#projects div.show::before, #projects div.show::after {
+    opacity: 1;
+    top: 0;
+    height: 100%;
+    transition: opacity 0.2s, left var(--duration), right var(--duration), top var(--duration) var(--duration), height var(--duration) var(--duration);
+}
+
+#projects > div::before { left:  calc(50% - var(--width) / 2); }
+#projects > div::after  { right: calc(50% - var(--width) / 2); }
+
+#projects > div.show::before { left:  0; }
+#projects > div.show::after  { right: 0; }
