@@ -426,3 +426,51 @@ body::-webkit-scrollbar-thumb:hover {
 ::selection {
     background: #134D04;
 }
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto !important;
+    }
+
+    #name {
+        height: 100vh !important;
+        left: -15.5vh !important;
+        top: 0 !important;
+    }
+
+    #name #cactus-left, #name #cactus-right path {
+        opacity: 0 !important;
+    }
+
+    #name #cactus-right {
+        height: 102vh !important;
+    }
+
+    #name, #name * {
+        transition: 0s all !important;
+    }
+
+    #letters span, #about-me h1, #about-me p, #about-me li {
+        animation-duration: 0s !important;
+        animation-delay: 0s !important;
+    }
+
+    #tech #logos > :not(:first-child) {
+        --duration: 20s !important;
+    }
+
+    #projects > div > * {
+        opacity: 1 !important;
+        transition-duration: 0s !important;
+    }
+
+    #projects div::before, #projects div::after {
+        opacity: 1 !important;
+        top: 0 !important;
+        height: 100% !important;
+        transition-duration: 0s !important;
+    }
+
+    #projects > div::before { left:  0 !important; }
+    #projects > div::after  { right: 0 !important; }
+}
