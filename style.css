@@ -136,8 +136,8 @@ header {
     width: 100vw;
     height: auto;
     fill: var(--foreground);
-    -webkit-filter: drop-shadow(0 5px 3px rgba(0, 0, 0, 0.4));
-    filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.4));
+    -webkit-filter: drop-shadow(0 16px 8px rgba(0, 0, 0, 0.4));
+    filter: drop-shadow(0 16px 8px rgba(0, 0, 0, 0.4));
 }
 
 #about-me h1, #about-me p, #about-me li {
@@ -239,9 +239,11 @@ main #content > div {
     --width: 4vw;
     width: var(--width);
     top: calc(60% - var(--width) / 2);
-    --duration: 5s;
+    --duration: 6s;
     z-index: 2;
     animation: horizontal var(--duration) ease-in-out infinite;
+    -webkit-filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4));
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4));
 }
 
 #tech #logos > :not(:first-child) img {
@@ -302,12 +304,19 @@ main #content > div {
     justify-content: space-between;
 }
 
+#projects h2 > span {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1.5vh;
+}
+
 #projects > div h2 a {
     text-decoration: none;
 }
 
 #projects > div h2 svg {
-    display: inline-block;
+    display: block;
     height: 4vh;
     color: var(--main-color);
     fill: var(--main-color);
@@ -396,4 +405,24 @@ footer {
 footer p {
     text-align: center;
     font-size: 3vh;
+}
+
+body::-webkit-scrollbar {
+    width: 7px;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: var(--main-color);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--highlight);
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(92, 140, 9);
+}
+
+::selection {
+    background: rgb(165, 201, 191);
 }
