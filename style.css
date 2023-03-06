@@ -362,3 +362,38 @@ main #content > div {
 
 #projects > div.show::before { left:  0; }
 #projects > div.show::after  { right: 0; }
+
+#contact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5vh;
+    height: max-content;
+}
+
+#contact a {
+
+    display: inline-block;
+}
+
+#contact svg {
+    fill: var(--main-color);
+    stroke: var(--main-color);
+    overflow: visible;
+    transition: fill 0.3s, stroke 0.3s;
+    height: 7vh;
+}
+
+#contact a:hover svg {
+    fill: var(--highlight);
+    stroke: var(--highlight);
+}
+
+footer {
+    margin-top: 3vh
+}
+
+footer p {
+    text-align: center;
+    font-size: 3vh;
+}
