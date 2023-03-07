@@ -1,19 +1,21 @@
-#name {
-    height: 100vh !important;
-    left: -15.5vh !important;
-    top: 0 !important;
-}
+@media (orientation: landscape) {
+    #name {
+        height: 100vh !important;
+        left: -15.5vh !important;
+        top: 0 !important;
+    }
 
-#name #cactus-left, #name #cactus-right path {
-    opacity: 0 !important;
-}
+    #name #cactus-left, #name #cactus-right path {
+        opacity: 0 !important;
+    }
 
-#name #cactus-right {
-    height: 102vh !important;
-}
+    #name #cactus-right {
+        height: 102vh !important;
+    }
 
-#name, #name * {
-    transition: 0s all !important;
+    #name, #name * {
+        transition: 0s all !important;
+    }
 }
 
 #projects > div > * {

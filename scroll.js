@@ -19,3 +19,9 @@ function scroll() {
 
 window.addEventListener("load", scroll);
 document.addEventListener("scroll", scroll);
+
+window.onunload = () => { window.scrollTo(0,0); }
+
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
