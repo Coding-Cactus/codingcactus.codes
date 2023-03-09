@@ -18,6 +18,8 @@ function scroll() {
 }
 
 window.addEventListener("load", scroll);
+window.addEventListener("load", () => { document.body.classList.remove("no-js"); });
+
 document.addEventListener("scroll", scroll);
 
 window.onunload = () => { window.scrollTo(0,0); }

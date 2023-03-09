@@ -1,34 +1,34 @@
 @media (orientation: landscape) {
-    #name {
+    .no-js #name {
         height: 100vh !important;
         left: -15.5vh !important;
         top: 0 !important;
     }
 
-    #name #cactus-left, #name #cactus-right path {
+    .no-js #name #cactus-left, .no-js #name #cactus-right path {
         opacity: 0 !important;
     }
 
-    #name #cactus-right {
+    .no-js #name #cactus-right {
         height: 102vh !important;
     }
 
-    #name, #name * {
+    .no-js #name, .no-js #name * {
         transition: 0s all !important;
     }
 }
 
-#projects > div > * {
+.no-js #projects > div > * {
     opacity: 1 !important;
     transition-duration: 0s !important;
 }
 
-#projects div::before, #projects div::after {
+.no-js #projects div::before, .no-js #projects div::after {
     opacity: 1 !important;
     top: 0 !important;
     height: 100% !important;
     transition-duration: 0s !important;
 }
 
-#projects > div::before { left:  0 !important; }
-#projects > div::after  { right: 0 !important; }
+.no-js #projects > div::before { left:  0 !important; }
+.no-js #projects > div::after  { right: 0 !important; }

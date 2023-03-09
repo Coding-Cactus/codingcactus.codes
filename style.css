@@ -11,6 +11,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    outline-color: var(--highlight);
+    outline-width: 2px;
+}
+
+a:focus {
+    border-radius: 2px;
+    outline-style: dashed;
 }
 
 html {
@@ -297,6 +304,10 @@ main #content > div {
     color: var(--highlight);
 }
 
+#projects p code {
+    font-size: 81%;
+}
+
 #projects > div h2 {
     font-size: 4vh;
     margin-bottom: 1.5vh;
@@ -382,13 +393,11 @@ main #content > div {
 }
 
 #contact a {
-
     display: inline-block;
 }
 
 #contact svg {
     fill: var(--main-color);
-    stroke: var(--main-color);
     overflow: visible;
     transition: fill 0.3s, stroke 0.3s;
     height: 7vh;
@@ -397,7 +406,6 @@ main #content > div {
 
 #contact a:hover svg {
     fill: var(--highlight);
-    stroke: var(--highlight);
 }
 
 footer {
@@ -414,7 +422,7 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-track {
-    background-color: var(--main-color);
+    background-color: #06250b;
 }
 
 body::-webkit-scrollbar-thumb {
