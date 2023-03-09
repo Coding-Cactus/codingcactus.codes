@@ -15,7 +15,7 @@
     outline-width: 2px;
 }
 
-a:focus {
+a:focus-visible {
     border-radius: 2px;
     outline-style: dashed;
 }
