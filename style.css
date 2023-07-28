@@ -231,8 +231,28 @@ main #content > div {
 }
 
 #tech #logos img {
-    pointer-events: none;
+    border-radius: 100%;
     user-select: none;
+    position: relative;
+    box-shadow: 0 0 0 0 #c00;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+#tech #logos img.correct {
+    box-shadow: 0 0 20px 0 #0c0;
+}
+
+#tech #logos img.incorrect {
+    box-shadow: 0 0 20px 0 #f00;
+}
+
+#tech #logos > :first-child.green {
+    transform: rotateY(calc(360deg * 5));
+    filter: invert(25%) sepia(99%) saturate(753%) hue-rotate(81deg) brightness(96%) contrast(86%);;
+}
+
+#tech #logos > :first-child.clickable {
+    cursor: pointer;
 }
 
 #tech #logos > :first-child {
@@ -241,6 +261,7 @@ main #content > div {
     top: calc(50% - var(--ruby-width) / 2);
     left: calc(50% - var(--ruby-width) / 2);
     z-index: 1;
+    transition: filter 4s ease-in-out, transform 4s ease-in-out;
 }
 
 #tech #logos > :not(:first-child) {
@@ -257,6 +278,11 @@ main #content > div {
 #tech #logos > :not(:first-child) img {
     width: 100%;
     animation: vertical var(--duration) ease-in-out calc(var(--duration) / -4) infinite;
+}
+
+
+#tech #logos.paused > :not(:first-child), #tech #logos.paused > :not(:first-child) img {
+    animation-play-state: paused;
 }
 
 #tech #logos > :nth-child(2) { animation-delay: calc(var(--duration) / -8 * 1); }
@@ -417,19 +443,19 @@ footer p {
     font-size: 3vh;
 }
 
-body::-webkit-scrollbar {
+::-webkit-scrollbar {
     width: 7px;
 }
 
-body::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
     background-color: #06250b;
 }
 
-body::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
     background-color: var(--highlight);
 }
 
-body::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
     background-color: #5C8C09;
 }
 
@@ -589,4 +615,70 @@ body::-webkit-scrollbar-thumb:hover {
             opacity: 0;
         }
     }
+}
+
+#overlay {
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #000000cc;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    z-index: 2;
+    transition: opacity 0.3s, visibility 0s 0.3s;
+}
+
+#overlay.show {
+    opacity: 1;
+    visibility: visible !important;
+    transition: opacity 0.3s;
+}
+
+#song {
+    position: relative;
+    width: max-content;
+    display: flex;
+    overflow: auto;
+    margin: 50px;
+}
+
+#song img {
+    height: 300px;
+    width: auto;
+}
+
+#overlay p {
+    font-size: 22px;
+    line-height: normal;
+    margin: 0;
+    text-align: left;
+}
+
+#overlay .verse {
+    margin: 20px 0;
+}
+
+#overlay #close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
+#overlay #close svg {
+    height: 40px;
+}
+
+#overlay #close path {
+    stroke: var(--main-color);
+    transition: stroke 0.3s;
+}
+
+#overlay #close:hover path {
+    stroke: var(--highlight);
 }
